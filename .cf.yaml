@@ -3,3 +3,7 @@ python: 3.6
 install:
 - pip install pipenv
 - pipenv install
+before_script:
+- ls
+- cd my_project
+- python3 --version

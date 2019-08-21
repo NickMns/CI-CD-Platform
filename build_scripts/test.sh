@@ -1,0 +1,1 @@
+echo Print from script
