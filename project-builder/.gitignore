@@ -1,0 +1,5 @@
+# Directories
+.vscode/
+__pycache__/
+
+.swp

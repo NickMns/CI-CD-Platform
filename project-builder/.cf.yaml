@@ -4,6 +4,9 @@ install:
 - pip install pipenv
 - pipenv install
 before_script:
+- printf "[Start Build]\n"
 - ls
 - cd my_project
 - python3 --version
+after_script:
+- printf "[Finish Build]\n"

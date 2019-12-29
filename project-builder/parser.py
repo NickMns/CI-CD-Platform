@@ -39,7 +39,7 @@ if __name__ == "__main__":
     print(os.getcwd())
     script_path = os.path.join(os.getcwd(), "build_scripts/test.sh")
     print(script_path)
-    call_script(["./test.sh"])
+    call_script([script_path])
     # Prepare build scripts (depending on configuration provided)
     # builder.py
 
