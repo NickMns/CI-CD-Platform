@@ -3,5 +3,4 @@
 __pycache__/
 
 .swp
-/log/application_log.log
-
+*.log

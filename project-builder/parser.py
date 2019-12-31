@@ -1,6 +1,7 @@
 import os
 import yaml
 import logging
+import logging.config
 
 import parse_exceptions as pex
 
@@ -31,14 +32,8 @@ def main():
     for handler in logging.root.handlers[:]:
         logging.root.removeHandler(handler)
 
-    log_format = "%(asctime)s::%(levelname)s::%(name)s::"\
-             "%(filename)s::%(lineno)d::%(message)s"
+    logging.config.fileConfig("logging.conf")
 
-    logging.basicConfig(filename='logs/application_log.log', filemode='w', 
-        level=logging.INFO, format=log_format)
-    logging.getLogger().addHandler(logging.StreamHandler())
-
-    # Load .cf.yaml (safe_load)
     conf_f = load_yaml()
 
     # Validate yaml for configuration errors
@@ -47,14 +42,17 @@ def main():
     from builder import call_script
     from builder import call_bash_command
 
-    call_bash_command("ls")
-    call_bash_command("cd build_scripts")
-    call_bash_command("ls")
-    logging.info("Current Working Directory = {}".format(os.getcwd()))
+    from builder import run_shell_command
+    from builder import run_shell_script
+
+    run_shell_command("ls -a")
+    #run_shell_command("cd build_scripts/")
+    run_shell_command("ls -al")
+    #logging.info("Current Working Directory = {}".format(os.getcwd()))
 
     script_path = os.path.join(os.getcwd(), "build_scripts/test.sh")
-    call_script([script_path])
-    
+    run_shell_script([script_path])
+
     # Prepare build scripts (depending on configuration provided)
     # builder.py
 
