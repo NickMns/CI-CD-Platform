@@ -10,6 +10,7 @@ import io
 logging.config.fileConfig("logging.conf")
 
 def run_shell_command(command_line):
+    command_line_args = shlex.split(command_line)
     logging.info('Subprocess: "' + command_line + '"')
 
     try:

@@ -38,9 +38,6 @@ def main():
 
     # Validate yaml for configuration errors
     validate_yaml(conf_f)
-    
-    from builder import call_script
-    from builder import call_bash_command
 
     from builder import run_shell_command
     from builder import run_shell_script
